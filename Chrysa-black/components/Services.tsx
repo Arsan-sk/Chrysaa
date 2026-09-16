@@ -128,6 +128,7 @@ export default function Services() {
                   </div>
 
                   <span className="srv-list-label">{service.title}</span>
+                  <span className="sr-only">: {service.description}</span>
 
                   <motion.div
                     className="srv-list-arrow"

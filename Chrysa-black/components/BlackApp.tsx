@@ -24,35 +24,39 @@ export default function BlackApp() {
       {/* Navigation */}
       <Navigation />
 
-      {/* Hero Section */}
-      <Hero />
+      {/* Main Landmark */}
+      <main id="main-content">
+        {/* Hero Section */}
+        <Hero />
 
-      {/* Tech Stack Marquee */}
-      <TechMarquee />
+        {/* Tech Stack Marquee */}
+        <TechMarquee />
 
-      {/* Services Grid (9 Realistic Capabilities) */}
-      <Services />
+        {/* Services Grid (9 Realistic Capabilities) */}
+        <Services />
 
-      {/* Process / How We Work */}
-      <Process />
+        {/* Process / How We Work */}
+        <Process />
 
-      {/* Brand Transformation Interactive Experience */}
-      <Transformation />
+        {/* Brand Transformation Interactive Experience */}
+        <Transformation />
 
-      {/* Sample Works Interactive 3D Showcase */}
-      <SampleWorks />
+        {/* Sample Works Interactive 3D Showcase */}
+        <SampleWorks />
 
-      {/* Real Project Portfolio Showcase */}
-      <Portfolio />
+        {/* Real Project Portfolio Showcase */}
+        <Portfolio />
 
-      {/* FAQ Accordion */}
-      <FAQ />
+        {/* FAQ Accordion */}
+        <FAQ />
 
-      {/* Contact & Transformation CTA */}
-      <CTA />
+        {/* Contact & Transformation CTA */}
+        <CTA />
+      </main>
 
       {/* Footer with Marquee */}
       <Footer />
     </div>
   );
 }
+

@@ -199,7 +199,7 @@ The primary Next.js app reads `NEXT_PUBLIC_SITE_URL` for canonical URLs, structu
 NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
 ```
 
-The repository currently uses `https://chrysaa.vercel.app` as a fallback because a final production domain has not been recorded yet. Replace the same fallback in the standalone static app's `index.html`, `robots.txt`, and `sitemap.xml` when the domain is confirmed. Google Search Console verification is available at `/google82ea3315fdd0abe5.html`.
+The repository currently uses `https://chrysaaa.vercel.app` as a fallback. Replace the same fallback in the standalone static app's `index.html`, `robots.txt`, and `sitemap.xml` if a custom domain is confirmed. Google Search Console verification is available at `/google82ea3315fdd0abe5.html`.
 
 ## Current open items
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chrysaa.vercel.app/sitemap.xml
+Sitemap: https://chrysaaa.vercel.app/sitemap.xml
