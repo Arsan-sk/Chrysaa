@@ -15,13 +15,15 @@ export default function ThemeToggle({ variant = "dark", className = "" }: ThemeT
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
-      className={`group relative inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wider transition-all duration-300 focus:outline-none ${
+      className={`theme-toggle group relative inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8A33D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0A08] ${
         variant === "dark"
           ? "bg-[#141310]/80 border border-[#F5F1E8]/10 text-[#F5F1E8]/80 hover:text-white hover:border-[#E8A33D]/40 hover:bg-[#1B1915] hover:shadow-[0_0_15px_rgba(232,163,61,0.15)]"
           : "bg-[#e7e4dc]/80 border border-[#1b1d1c]/15 text-[#1b1d1c]/80 hover:text-[#1b1d1c] hover:border-[#e84d37]/40 hover:bg-[#dedad0] hover:shadow-[0_0_15px_rgba(232,77,55,0.12)]"
       } ${className}`}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-pressed={isDark}
       title={`Switch to ${isDark ? "Day" : "Night"} theme`}
     >
       <div className="relative flex h-4 w-4 items-center justify-center">

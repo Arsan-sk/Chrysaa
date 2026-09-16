@@ -374,6 +374,11 @@ html.theme-black ::selection {
   gap: 0.75rem;
 }
 
+.theme-toggle {
+  min-height: 40px;
+  white-space: nowrap;
+}
+
 .nav-cta {
   display: none;
   padding: 0.55rem 1.15rem;
@@ -468,6 +473,32 @@ html.theme-black ::selection {
   display: inline-flex !important;
   font-size: 0.95rem;
   padding: 0.85rem 2.25rem;
+}
+
+@media (max-width: 520px) {
+  .nav-header {
+    top: 0.65rem;
+    padding: 0 0.5rem;
+  }
+
+  .nav-container {
+    padding: 0.45rem 0.65rem;
+  }
+
+  .nav-actions {
+    gap: 0.45rem;
+  }
+
+  .theme-toggle {
+    min-height: 44px;
+    gap: 0.45rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .nav-hamburger {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────
