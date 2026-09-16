@@ -10,6 +10,7 @@ This repository contains two related implementations of the CHRYSA website:
 
 - **Chrysa-black**: the primary Next.js experience. It includes a theme switcher that renders the black/night and white/day experiences from one application.
 - **Chrysa-white**: a standalone Vite + React implementation of the white/day experience. It is useful for focused development of that visual direction.
+- **Root `shared/` and `public/`**: canonical content and assets consumed by both implementations.
 - **Root files**: shared context, an older Vite configuration, and project-level metadata. The root Vite entry currently references a missing `src/` directory, so use one of the app directories for local development.
 
 ## Product direction
@@ -48,7 +49,7 @@ The portfolio content includes GridLock, Bonhomie, SWIK Plus, Share-Bite, and To
 - GSAP and ScrollTrigger for reveal motion
 - Framer Motion and Lucide React available for interactions and UI
 
-Both implementations use local assets from their respective `public/` directories and Google Fonts loaded by the application HTML/layout files.
+Both implementations use the root shared assets and Google Fonts loaded by the application HTML/layout files.
 
 ## Requirements
 
@@ -128,23 +129,36 @@ Its static output is written to `Chrysa-white/dist/` and can be deployed to any 
 
 ```text
 .
+├── public/
+│   ├── common/               # Shared brand assets and future common media
+│   ├── black/                # Black-theme-only assets
+│   ├── white/                # White-theme-only assets
+│   └── work/                 # Shared project/sample-work media
+├── shared/
+│   └── content/              # Canonical data consumed by both apps
 ├── Chrysa-black/
 │   ├── app/                  # Next.js routes, layout, and global styles
 │   ├── components/           # Black theme components and white theme modules
 │   ├── context/              # Shared theme state
 │   ├── hooks/                # Interaction and scroll hooks
 │   ├── lib/                  # Shared data and utilities
-│   ├── public/work/          # Portfolio media
 │   └── scripts/              # Theme/content maintenance scripts
 ├── Chrysa-white/
 │   ├── src/components/       # Standalone white experience
-│   ├── public/work/          # Portfolio media
 │   └── PRP.md                # Product, design, and interaction requirements
 ├── chrysa-context.md         # Brand, content, design, and open-item context
 ├── index.html                # Legacy root Vite shell
 ├── package.json               # Legacy root package metadata
 └── .gitignore
 ```
+
+### Shared content and assets
+
+The two apps use the same root-level project data and work images. `shared/content/sampleWorks.ts` owns the sample-work records, while `shared/content/siteData.ts` owns the shared projects, capabilities, process steps, and connection details. Existing image URLs such as `/work/resin-art.png` remain unchanged.
+
+Vite uses the repository root `public/` directory directly. Next.js serves the same root assets through `Chrysa-black/app/[assetType]/[...path]/route.ts`, so the frontend components do not need separate asset paths or duplicated public folders.
+
+Theme-specific components, CSS, animation, and layout remain inside their respective app directories. Centralizing content and media does not alter the visual implementation.
 
 ## Editing guide
 

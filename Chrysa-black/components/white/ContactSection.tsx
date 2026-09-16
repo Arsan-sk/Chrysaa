@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react'
 import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Sparkles } from 'lucide-react'
-import { connectionDetails } from './siteData'
+import { connectionDetails } from '@shared/content/siteData'
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (

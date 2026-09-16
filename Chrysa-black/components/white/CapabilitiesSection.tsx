@@ -1,6 +1,6 @@
 "use client";
 import { ArrowUpRight } from 'lucide-react'
-import { capabilities } from './siteData'
+import { capabilities } from '@shared/content/siteData'
 
 export function CapabilitiesSection() {
   return (

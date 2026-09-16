@@ -1,6 +1,6 @@
 "use client";
 import { ArrowUpRight, Play } from 'lucide-react'
-import { projects } from './siteData'
+import { projects } from '@shared/content/siteData'
 
 export function WorkSection() {
   return (

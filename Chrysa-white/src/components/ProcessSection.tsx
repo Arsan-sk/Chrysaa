@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { processSteps } from "./siteData";
+import { processSteps } from "../../../shared/content/siteData";
 
 const stageDetails = [
   [

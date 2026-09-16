@@ -1,6 +1,6 @@
 "use client";
 import { ArrowUpRight, ExternalLink, MoveRight } from 'lucide-react'
-import { connectionDetails } from './siteData'
+import { connectionDetails } from '@shared/content/siteData'
 
 function WhatsAppIcon({ size = 15 }: { size?: number }) {
   return (

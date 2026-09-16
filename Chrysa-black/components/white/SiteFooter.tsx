@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react'
 import { ArrowUp, ArrowUpRight, Check, Copy, ExternalLink, Mail, MessageSquare, ShieldCheck, Sparkles } from 'lucide-react'
-import { connectionDetails } from './siteData'
+import { connectionDetails } from '@shared/content/siteData'
 
 // Crisp custom SVG icons for brands
 function WhatsAppIcon({ size = 18 }: { size?: number }) {

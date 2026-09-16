@@ -58,4 +58,3 @@ export const connectionDetails = {
     tag: 'Shaikh Mohd Arsan',
   },
 } as const
-

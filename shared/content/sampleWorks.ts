@@ -62,7 +62,7 @@ export const sampleWorks: SampleWork[] = [
     title: 'AI Marketing Gift Shop',
     category: 'AI / Marketing Automation',
     description: 'Personalized gift recommendation engine driven by semantic search, visual personalization, and automated social campaigns.',
-    image: '/work/gift-shop-ai.webp',
+    image: '/work/gift-shop-ai.png',
     status: 'sample',
     accentColor: '#10b981',
     stats: 'Autonomous Personalization',

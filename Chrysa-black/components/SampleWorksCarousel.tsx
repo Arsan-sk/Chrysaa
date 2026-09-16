@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
-import { sampleWorks } from "@/lib/data";
+import { sampleWorks } from "@shared/content/sampleWorks";
 
 export function SampleWorksCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
