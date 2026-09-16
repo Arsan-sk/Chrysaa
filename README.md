@@ -191,6 +191,16 @@ Then verify the following manually in a desktop and mobile viewport:
 - Reduced-motion preferences disable or soften non-essential animation.
 - Contact details and placeholder founder/project assets have been replaced.
 
+## SEO deployment configuration
+
+The primary Next.js app reads `NEXT_PUBLIC_SITE_URL` for canonical URLs, structured data, `robots.txt`, and the XML sitemap. Set it to the real production origin before deployment, for example:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
+```
+
+The repository currently uses `https://chrysaa.vercel.app` as a fallback because a final production domain has not been recorded yet. Replace the same fallback in the standalone static app's `index.html`, `robots.txt`, and `sitemap.xml` when the domain is confirmed. Google Search Console verification is available at `/google82ea3315fdd0abe5.html`.
+
 ## Current open items
 
 The following are still content decisions rather than implementation tasks:
