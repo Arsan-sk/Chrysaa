@@ -11,33 +11,24 @@ function MarqueeRow({
   direction?: "left" | "right";
   speed?: number;
 }) {
-  const doubled = [...items, ...items];
+  const quadrupled = [...items, ...items, ...items, ...items];
 
   return (
     <div className="marquee-wrapper">
-      <motion.div
-        className="marquee-track"
-        animate={{
-          x: direction === "left" ? [0, -50 * items.length] : [-50 * items.length, 0],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: speed,
-            ease: "linear",
-          },
-        }}
+      <div
+        className={`marquee-track ${direction === "left" ? "marquee-left" : "marquee-right"}`}
+        style={{ animationDuration: `${speed}s` }}
       >
-        {doubled.map((tech, i) => (
+        {quadrupled.map((tech, i) => (
           <span key={`${tech}-${i}`} className="marquee-item" data-cursor="">
             {tech}
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
+
 
 export default function TechMarquee() {
   const firstHalf = techStack.slice(0, Math.ceil(techStack.length / 2));

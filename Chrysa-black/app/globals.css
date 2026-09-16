@@ -1,6 +1,80 @@
 @import "tailwindcss";
 
+@theme {
+  @keyframes hero-glow-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes hero-spin-clockwise {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes hero-spin-counter {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes scroll-pulse {
+    0% {
+      transform: scaleY(0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0);
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes marquee-scroll-left {
+    0% {
+      transform: translate3d(0%, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes marquee-scroll-right {
+    0% {
+      transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+
+  @keyframes footer-marquee-scroll {
+    0% {
+      transform: translate3d(0%, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}
+
 :root {
+
   --bg-deep: #0B0A08;
   --bg-surface: #141310;
   --bg-surface-elevated: #1B1915;
@@ -559,6 +633,8 @@ html.theme-black ::selection {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(232, 163, 61, 0.22) 0%, rgba(199, 123, 61, 0.06) 45%, transparent 70%);
   filter: blur(80px);
+  animation: hero-glow-pulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .hero-rings-wrapper {
@@ -581,6 +657,8 @@ html.theme-black ::selection {
   width: 440px;
   height: 440px;
   border-color: rgba(232, 163, 61, 0.2);
+  animation: hero-spin-clockwise 30s linear infinite;
+  will-change: transform;
 }
 
 .ring-2 {
@@ -588,13 +666,18 @@ html.theme-black ::selection {
   height: 350px;
   border-color: rgba(245, 241, 232, 0.08);
   border-radius: 55% 45% 35% 65% / 50% 60% 40% 50%;
+  animation: hero-spin-counter 40s linear infinite;
+  will-change: transform;
 }
 
 .ring-3 {
   width: 260px;
   height: 260px;
   border-color: rgba(232, 163, 61, 0.28);
+  animation: hero-spin-clockwise 25s linear infinite;
+  will-change: transform;
 }
+
 
 .hero-content {
   max-width: 860px;
@@ -710,6 +793,8 @@ html.theme-black ::selection {
   height: 22px;
   background: linear-gradient(to bottom, var(--accent-gold), transparent);
   transform-origin: top;
+  animation: scroll-pulse 2.2s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -749,8 +834,22 @@ html.theme-black ::selection {
   display: flex;
   gap: 0.75rem;
   white-space: nowrap;
+  width: max-content;
   will-change: transform;
 }
+
+.marquee-track.marquee-left {
+  animation: marquee-scroll-left 25s linear infinite;
+}
+
+.marquee-track.marquee-right {
+  animation: marquee-scroll-right 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 
 .marquee-item {
   display: inline-flex;
@@ -2026,11 +2125,19 @@ html.theme-black ::selection {
   letter-spacing: 0.2em;
   font-weight: 600;
   color: var(--accent-gold);
+  width: max-content;
+  will-change: transform;
+  animation: footer-marquee-scroll 25s linear infinite;
+}
+
+.footer-marquee-strip:hover .footer-marquee-track {
+  animation-play-state: paused;
 }
 
 .footer-marquee-dot {
   opacity: 0.5;
 }
+
 
 .footer-body {
   padding-top: 3.5rem;

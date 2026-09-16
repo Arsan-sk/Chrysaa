@@ -56,11 +56,7 @@ export default function Footer() {
     <footer className="footer-container">
       {/* Infinite Top Banner Marquee */}
       <div className="footer-marquee-strip">
-        <motion.div
-          className="footer-marquee-track"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-        >
+        <div className="footer-marquee-track">
           {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map(
             (item, index) => (
               <span
@@ -71,8 +67,9 @@ export default function Footer() {
               </span>
             )
           )}
-        </motion.div>
+        </div>
       </div>
+
 
       {/* Main Footer Body */}
       <div className="section-container footer-body">

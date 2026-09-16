@@ -207,35 +207,20 @@ export default function Hero() {
 
       {/* Background Layer 2: Metamorphosis Ring & Aura */}
       <div className="hero-metamorphosis-center">
-        <motion.div
-          className="hero-glow-core"
-          animate={{
-            scale: [1, 1.25, 0.95, 1],
-            opacity: [0.2, 0.35, 0.16, 0.2],
+        <div className="hero-glow-core" />
+        <div
+          className="hero-rings-wrapper"
+          style={{
+            transform: `translate3d(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px, 0)`,
+            transition: "transform 0.2s ease-out",
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div className="hero-rings-wrapper">
-          <motion.div
-            className="hero-ring ring-1"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            style={{ x: mousePos.x * 0.4, y: mousePos.y * 0.4 }}
-          />
-          <motion.div
-            className="hero-ring ring-2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            style={{ x: mousePos.x * -0.3, y: mousePos.y * -0.3 }}
-          />
-          <motion.div
-            className="hero-ring ring-3"
-            animate={{ rotate: 180 }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            style={{ x: mousePos.x * 0.5, y: mousePos.y * 0.5 }}
-          />
+        >
+          <div className="hero-ring ring-1" />
+          <div className="hero-ring ring-2" />
+          <div className="hero-ring ring-3" />
         </div>
       </div>
+
 
       {/* Interactive Constellation Particle Canvas */}
       <ConstellationCanvas />
@@ -309,13 +294,10 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3, duration: 0.6 }}
       >
-        <motion.div
-          className="scroll-line"
-          animate={{ scaleY: [0, 1, 0], opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="scroll-line" />
         <span>Scroll</span>
       </motion.div>
     </section>
+
   );
 }
