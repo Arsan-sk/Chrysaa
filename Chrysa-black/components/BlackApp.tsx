@@ -14,7 +14,7 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function BlackApp() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="relative min-h-screen bg-[#0B0A08] text-[#F5F1E8]">
