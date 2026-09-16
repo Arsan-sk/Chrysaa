@@ -292,7 +292,7 @@ export default function Hero() {
             <ArrowRight size={16} />
           </MagneticButton>
           <MagneticButton
-            href="#work"
+            href="#sample-work"
             className="btn-secondary hero-btn-sub"
             data-cursor="Explore"
           >
