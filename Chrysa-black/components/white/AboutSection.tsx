@@ -131,14 +131,27 @@ export function AboutSection() {
           </div>
         </div>
 
-        <p className="about-cofounder">
-          <strong>Imran</strong>
-          <span>Co-Founder</span>
-        </p>
+        <div className="about-cofounder-row">
+          <p className="about-cofounder">
+            <strong>Imran</strong>
+            <span>Co-Founder</span>
+          </p>
+          <a
+            href={connectionDetails.imranPortfolio.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="founder-portfolio-chip"
+            aria-label="Visit Imran Portfolio imran21.vercel.app"
+          >
+            <span>{connectionDetails.imranPortfolio.handle}</span>
+            <ExternalLink size={12} />
+          </a>
+        </div>
 
         <a className="text-link" href="#contact">
           Meet us in a conversation <MoveRight size={18} />
         </a>
+
       </div>
     </section>
   )

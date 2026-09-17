@@ -278,10 +278,11 @@ export const founders: Founder[] = [
     bio: "Operations and growth strategist. Building the bridge between vision and execution — ensuring every project delivers real business impact. Focused on client relationships, project delivery, and studio growth.",
     image: "/images/imran.jpg",
     socials: {
-      linkedin: "#",
+      portfolio: "https://imran21.vercel.app/",
     },
   },
 ];
+
 
 // ─── Tech Stack (for marquee) ─────────────────────────────
 export const techStack: string[] = [

@@ -57,4 +57,11 @@ export const connectionDetails = {
     label: 'Founder Portfolio',
     tag: 'Shaikh Mohd Arsan',
   },
+  imranPortfolio: {
+    handle: 'imran21.vercel.app',
+    href: 'https://imran21.vercel.app/',
+    label: 'Co-Founder Portfolio',
+    tag: 'Imran',
+  },
 } as const
+

@@ -310,7 +310,7 @@ export function SiteFooter() {
             </a>
           </div>
 
-          {/* Founder Portfolio Card */}
+          {/* Leadership Portfolio Cards */}
           <div className="footer-founder-card">
             <span className="founder-badge">Leadership</span>
             <div className="founder-card-body">
@@ -329,9 +329,29 @@ export function SiteFooter() {
                 <ExternalLink size={12} />
               </a>
             </div>
+
+            <div className="founder-card-divider" />
+
+            <div className="founder-card-body">
+              <div>
+                <p className="founder-name">Imran</p>
+                <p className="founder-role">Co-Founder & Growth</p>
+              </div>
+              <a
+                href={connectionDetails.imranPortfolio.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="founder-portfolio-link"
+                aria-label="Visit Co-Founder Portfolio imran21.vercel.app"
+              >
+                <span>{connectionDetails.imranPortfolio.handle}</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
 
       {/* Bottom Bar */}
       <div className="footer-bottom-bar">

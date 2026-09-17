@@ -2810,3 +2810,64 @@ html.theme-black ::selection {
   transform: scale(1.05);
 }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   MULTI-FOUNDER LEADERSHIP STYLES
+───────────────────────────────────────────────────────────── */
+.founder-card-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0.85rem 0;
+}
+
+.about-cofounder-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.85rem 1.15rem;
+  background: rgba(20, 20, 20, 0.03);
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  border-radius: 6px;
+  margin: 1.25rem 0;
+}
+
+.about-cofounder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.about-cofounder strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink, #141310);
+}
+
+.about-cofounder span {
+  font: 500 0.7rem var(--mono, monospace);
+  color: var(--muted, #8A8578);
+}
+
+.founder-portfolio-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(20, 20, 20, 0.05);
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  border-radius: 4px;
+  font: 500 0.68rem var(--mono, monospace);
+  color: var(--ink, #141310);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.founder-portfolio-chip:hover {
+  background: rgba(232, 77, 55, 0.08);
+  border-color: var(--signal, #E8A33D);
+  color: var(--signal, #E8A33D);
+}
+

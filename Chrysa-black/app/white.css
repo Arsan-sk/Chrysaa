@@ -1192,6 +1192,46 @@ h1 em,
   font: .62rem var(--mono);
   text-transform: uppercase;
 }
+/* Co-founder row with portfolio chip */
+.about-cofounder-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.about-cofounder-row .about-cofounder {
+  margin-top: 0;
+}
+
+.founder-portfolio-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(27, 29, 28, 0.05);
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font: 600 0.65rem var(--mono);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.founder-portfolio-chip:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .about-cofounder-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
 
 .final-cta {
   min-height: 80svh;

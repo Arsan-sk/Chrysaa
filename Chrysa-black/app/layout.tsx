@@ -70,7 +70,10 @@ export const metadata: Metadata = {
     "Shaikh Mohd Arsan",
     "Arsan",
   ],
-  authors: [{ name: "Shaikh Mohd Arsan", url: "https://arsansk.vercel.app" }],
+  authors: [
+    { name: "Shaikh Mohd Arsan", url: "https://arsansk.vercel.app" },
+    { name: "Imran", url: "https://imran21.vercel.app/" },
+  ],
   creator: "Shaikh Mohd Arsan",
   publisher: "CHRYSA",
   alternates: {
@@ -183,23 +186,36 @@ export default function RootLayout({
           { "@type": "Country", name: "United Kingdom" },
           { "@type": "Country", name: "Worldwide" },
         ],
-        founder: {
-          "@type": "Person",
-          name: "Shaikh Mohd Arsan",
-          alternateName: ["Arsan", "Arsan Shaikh", "Shaikh Arsan"],
-          jobTitle: "Founder & Systems Architect",
-          url: "https://arsansk.vercel.app",
-          sameAs: [
-            "https://github.com/Arsan-sk",
-            "https://linkedin.com/in/arsan-sk",
-            "https://www.instagram.com/its.chrysa.dev/",
-          ],
-        },
+        founder: [
+          {
+            "@type": "Person",
+            name: "Shaikh Mohd Arsan",
+            alternateName: ["Arsan", "Arsan Shaikh", "Shaikh Arsan"],
+            jobTitle: "Founder & Systems Architect",
+            url: "https://arsansk.vercel.app",
+            sameAs: [
+              "https://github.com/Arsan-sk",
+              "https://linkedin.com/in/arsan-sk",
+              "https://www.instagram.com/its.chrysa.dev/",
+            ],
+          },
+          {
+            "@type": "Person",
+            name: "Imran",
+            jobTitle: "Co-Founder",
+            url: "https://imran21.vercel.app/",
+            sameAs: [
+              "https://imran21.vercel.app/",
+            ],
+          },
+        ],
         sameAs: [
           "https://github.com/Arsan-sk",
           "https://linkedin.com/in/arsan-sk",
           "https://www.instagram.com/its.chrysa.dev/",
+          "https://imran21.vercel.app/",
         ],
+
         knowsAbout: services.map((service) => service.title),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
