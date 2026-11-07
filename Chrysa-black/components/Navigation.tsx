@@ -32,16 +32,7 @@ export default function Navigation() {
         transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
       >
         <nav
-          className="nav-container"
-          style={{
-            backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
-            background: scrolled
-              ? "rgba(11, 10, 8, 0.7)"
-              : "transparent",
-            borderColor: scrolled
-              ? "rgba(245, 241, 232, 0.06)"
-              : "transparent",
-          }}
+          className={`nav-container ${scrolled ? "nav-scrolled" : ""}`}
         >
           {/* Logo */}
           <a href="#" className="nav-logo" data-cursor="">

@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { navLinks, services } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
@@ -129,7 +128,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Navigation</h4>
+            <h3 className="footer-col-title">Navigation</h3>
             <ul className="footer-links">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -148,7 +147,7 @@ export default function Footer() {
 
           {/* Capabilities */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Key Capabilities</h4>
+            <h3 className="footer-col-title">Key Capabilities</h3>
             <ul className="footer-links">
               {services.slice(0, 5).map((s) => (
                 <li key={s.id}>
@@ -162,7 +161,7 @@ export default function Footer() {
 
           {/* Direct Inquiries */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Direct Inquiries</h4>
+            <h3 className="footer-col-title">Direct Inquiries</h3>
             <p className="footer-contact-text">
               Direct connection with Chrysa Studio:
             </p>
@@ -195,7 +194,7 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="footer-bottom">
           <div className="footer-copy">
-            &copy; {new Date().getFullYear()} CHRYSA Studio. All rights reserved.
+            &copy; 2026 CHRYSA Studio. All rights reserved.
           </div>
           <div className="footer-meta">
             <span>Designed &amp; Engineered with Precision</span>

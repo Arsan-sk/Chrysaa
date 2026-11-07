@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "npm --prefix Chrysa-black run dev",
+    "build": "npm --prefix Chrysa-black run build",
+    "start": "npm --prefix Chrysa-black run start",
+    "lint": "npm --prefix Chrysa-black run lint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

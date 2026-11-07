@@ -20,8 +20,11 @@ export default function CustomCursor() {
   useEffect(() => {
     // Detect touch devices
     const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(isTouch);
-    if (isTouch) return;
+    if (isTouch) {
+      // Defer state update out of synchronous effect execution
+      queueMicrotask(() => setIsTouchDevice(true));
+      return;
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -61,7 +64,7 @@ export default function CustomCursor() {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (isTouchDevice || !isDark) return null;
+  if (isTouchDevice) return null;
 
   return (
     <>
@@ -76,7 +79,7 @@ export default function CustomCursor() {
           y,
           zIndex: 99999,
           pointerEvents: "none",
-          mixBlendMode: "difference",
+          mixBlendMode: isDark ? "difference" : "normal",
         }}
         animate={{
           width: isHovering ? 64 : 12,
@@ -97,13 +100,14 @@ export default function CustomCursor() {
             height: "100%",
             borderRadius: "50%",
             background: isHovering
-              ? (isDark ? "rgba(232, 163, 61, 0.15)" : "rgba(232, 77, 55, 0.15)")
-              : (isDark ? "#E8A33D" : "#e84d37"),
-            border: isHovering ? `1px solid ${isDark ? "rgba(232, 163, 61, 0.5)" : "rgba(232, 77, 55, 0.5)"}` : "none",
+              ? (isDark ? "rgba(232, 163, 61, 0.15)" : "rgba(199, 123, 61, 0.12)")
+              : (isDark ? "#E8A33D" : "#C77B3D"),
+            border: isHovering ? `1px solid ${isDark ? "rgba(232, 163, 61, 0.5)" : "rgba(199, 123, 61, 0.5)"}` : "none",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             backdropFilter: isHovering ? "blur(4px)" : "none",
+            boxShadow: isDark ? "none" : (isHovering ? "0 4px 14px rgba(199, 123, 61, 0.2)" : "0 2px 8px rgba(199, 123, 61, 0.3)"),
           }}
         >
           {hoverText && (
@@ -112,10 +116,10 @@ export default function CustomCursor() {
               animate={{ opacity: 1, scale: 1 }}
               style={{
                 fontSize: "10px",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: isDark ? "#E8A33D" : "#e84d37",
+                color: isDark ? "#E8A33D" : "#C77B3D",
                 fontFamily: "var(--font-body)",
               }}
             >

@@ -3,8 +3,11 @@ import { useRef, useEffect, useCallback, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { ArrowRight, Compass } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 function ConstellationCanvas() {
+  const { theme } = useTheme();
+  const isDark = theme === "black";
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
   const animRef = useRef<number | undefined>(undefined);
@@ -69,7 +72,9 @@ function ConstellationCanvas() {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(232, 163, 61, ${(1 - d / 120) * 0.12})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(232, 163, 61, ${(1 - d / 120) * 0.12})`
+              : `rgba(199, 123, 61, ${(1 - d / 120) * 0.22})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -99,10 +104,10 @@ function ConstellationCanvas() {
         ctx.save();
         ctx.translate(px, py);
         ctx.rotate(p.r);
-        ctx.globalAlpha = p.o;
-        ctx.strokeStyle = "#E8A33D";
-        ctx.fillStyle = "rgba(232, 163, 61, 0.06)";
-        ctx.lineWidth = 0.6;
+        ctx.globalAlpha = isDark ? p.o : Math.min(1, p.o * 1.3);
+        ctx.strokeStyle = isDark ? "#E8A33D" : "#C77B3D";
+        ctx.fillStyle = isDark ? "rgba(232, 163, 61, 0.06)" : "rgba(199, 123, 61, 0.08)";
+        ctx.lineWidth = isDark ? 0.6 : 0.8;
 
         if (p.sh === "tri") {
           ctx.beginPath();
@@ -118,7 +123,11 @@ function ConstellationCanvas() {
             const a = (Math.PI / 3) * j;
             const hx = Math.cos(a) * p.s * 2;
             const hy = Math.sin(a) * p.s * 2;
-            j === 0 ? ctx.moveTo(hx, hy) : ctx.lineTo(hx, hy);
+            if (j === 0) {
+              ctx.moveTo(hx, hy);
+            } else {
+              ctx.lineTo(hx, hy);
+            }
           }
           ctx.closePath();
           ctx.stroke();
@@ -133,7 +142,7 @@ function ConstellationCanvas() {
         } else {
           ctx.beginPath();
           ctx.arc(0, 0, p.s, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(232, 163, 61, 0.35)";
+          ctx.fillStyle = isDark ? "rgba(232, 163, 61, 0.35)" : "rgba(199, 123, 61, 0.45)";
           ctx.fill();
         }
         ctx.restore();
@@ -141,7 +150,7 @@ function ConstellationCanvas() {
       animRef.current = requestAnimationFrame(loop);
     }
     loop();
-  }, []);
+  }, [isDark]);
 
   useEffect(() => {
     init();

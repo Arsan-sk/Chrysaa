@@ -12,14 +12,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("black");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("chrysa-theme") as Theme | null;
-    if (saved === "black" || saved === "white") {
-      setTheme(saved);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("chrysa-theme") as Theme | null;
+      if (saved === "black" || saved === "white") {
+        return saved;
+      }
     }
-  }, []);
+    return "black";
+  });
 
   useEffect(() => {
     // Sync class on root and body to allow exact theme styles
@@ -29,8 +30,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.body.classList.add(`theme-${theme}`);
 
     // Set matching background color on body and html to avoid bleed
-    const bgColor = theme === "black" ? "#0B0A08" : "#f2f0eb";
-    const textColor = theme === "black" ? "#F5F1E8" : "#1b1d1c";
+    const bgColor = theme === "black" ? "#0B0A08" : "#FAF7F2";
+    const textColor = theme === "black" ? "#F5F1E8" : "#141311";
     document.documentElement.style.backgroundColor = bgColor;
     document.documentElement.style.color = textColor;
     document.body.style.backgroundColor = bgColor;
@@ -40,7 +41,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const handleSetTheme = (newTheme: Theme) => {
     setTheme(newTheme);
     localStorage.setItem("chrysa-theme", newTheme);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const toggleTheme = () => {

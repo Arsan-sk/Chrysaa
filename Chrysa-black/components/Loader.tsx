@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Loader({ onComplete }: { onComplete: () => void }) {
+  const { theme } = useTheme();
+  const isDark = theme === "black";
   const [phase, setPhase] = useState<"morph" | "text" | "exit">("morph");
 
   useEffect(() => {
@@ -15,6 +18,10 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       clearTimeout(t3);
     };
   }, [onComplete]);
+
+  const bgColor = isDark ? "#0B0A08" : "#FAF7F2";
+  const accentColor = isDark ? "#E8A33D" : "#C77B3D";
+  const textColor = isDark ? "#F5F1E8" : "#141311";
 
   return (
     <AnimatePresence>
@@ -32,7 +39,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0B0A08",
+          background: bgColor,
           pointerEvents: phase === "exit" ? "none" : "all",
         }}
       >
@@ -53,7 +60,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           <motion.path
             d="M100,20 C140,20 170,50 175,90 C180,130 160,170 120,180 C80,190 40,170 30,130 C20,90 40,40 80,25 C85,23 92,20 100,20Z"
             fill="none"
-            stroke="#E8A33D"
+            stroke={accentColor}
             strokeWidth="1.5"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -62,7 +69,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           <motion.path
             d="M100,40 C130,42 150,65 152,90 C155,120 140,150 115,158 C90,165 60,150 50,125 C40,100 55,60 85,45 C90,42 95,40 100,40Z"
             fill="none"
-            stroke="#E8A33D"
+            stroke={accentColor}
             strokeWidth="0.8"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 0.5 }}
@@ -83,7 +90,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
             fontWeight: 300,
             fontStyle: "italic",
-            color: "#F5F1E8",
+            color: textColor,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
           }}

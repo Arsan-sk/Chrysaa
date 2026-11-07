@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces, Manrope, DM_Mono } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
-import "./white.css";
 import CustomCursor from "@/components/CustomCursor";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { projects, services, faqItems } from "@/lib/data";
@@ -23,20 +22,6 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  variable: "--font-dm-mono",
-  weight: ["400", "500"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -46,6 +31,7 @@ export const metadata: Metadata = {
   description:
     "CHRYSA is a digital transformation and technology studio in Mumbai, India. We engineer custom web applications, SaaS platforms, AI integrations, and automated digital systems for ambitious businesses.",
   keywords: [
+    // Brand terms
     "CHRYSA",
     "Chrysa Studio",
     "Chrysa digital agency",
@@ -57,18 +43,28 @@ export const metadata: Metadata = {
     "Chrysa AI",
     "Chrysa India",
     "Chrysa Mumbai",
+    // Service terms
     "digital transformation studio",
-    "digital transformation agency",
-    "software development agency",
-    "web development agency",
-    "custom web development",
+    "digital transformation agency India",
+    "software development agency Mumbai",
+    "web development agency India",
+    "custom web development Mumbai",
     "SaaS development agency",
-    "AI development agency",
+    "AI development agency India",
     "AI integration agency",
     "business automation agency",
     "UI UX development agency",
+    "full stack development agency",
+    "React Next.js development agency",
+    "web app development India",
+    "website development Mumbai",
+    "digital agency Mumbai",
+    "tech startup studio India",
+    "product development agency",
+    // People
     "Shaikh Mohd Arsan",
-    "Arsan",
+    "Arsan Shaikh developer",
+    "Chrysa founder",
   ],
   authors: [
     { name: "Shaikh Mohd Arsan", url: "https://arsansk.vercel.app" },
@@ -114,10 +110,11 @@ export const metadata: Metadata = {
     siteName: "CHRYSA",
     images: [
       {
-        url: `${siteUrl}/common/chrysa-mark.svg`,
+        url: `${siteUrl}/common/chrysa-og.png`,
         width: 1200,
         height: 630,
         alt: "CHRYSA — Digital Transformation & Technology Studio",
+        type: "image/png",
       },
     ],
   },
@@ -126,7 +123,7 @@ export const metadata: Metadata = {
     title: "CHRYSA | Digital Transformation & Technology Studio",
     description:
       "Websites, SaaS, AI integrations, automation, and digital experiences built for what your business can become.",
-    images: [`${siteUrl}/common/chrysa-mark.svg`],
+    images: [`${siteUrl}/common/chrysa-og.png`],
     creator: "@its_arsaaan",
   },
 };
@@ -146,7 +143,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
         "@id": `${siteUrl}/#organization`,
         name: "CHRYSA",
         alternateName: [
@@ -160,20 +157,25 @@ export default function RootLayout({
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: `${siteUrl}/common/chrysa-mark.svg`,
-          caption: "CHRYSA Studio Logo",
+          url: `${siteUrl}/common/chrysa-og.png`,
+          width: 1200,
+          height: 630,
+          caption: "CHRYSA Studio — Digital Transformation & Technology Studio",
         },
-        slogan: "Transform. Connect. Become.",
+        image: `${siteUrl}/common/chrysa-og.png`,
+        slogan: "From Potential to Presence",
         disambiguatingDescription:
           "CHRYSA is a digital transformation and technology studio inspired by the chrysalis process of metamorphosis, helping businesses evolve into modern digital systems through custom software, AI integration, and SaaS platforms.",
         description:
           "CHRYSA is a digital transformation and technology studio helping businesses turn existing ideas, manual processes, and systems into scalable web applications, SaaS products, AI systems, and digital experiences.",
         email: "chrysadev09@gmail.com",
+        priceRange: "$$",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Mumbai",
           addressRegion: "Maharashtra",
           addressCountry: "IN",
+          postalCode: "400001",
         },
         geo: {
           "@type": "GeoCoordinates",
@@ -184,7 +186,15 @@ export default function RootLayout({
           { "@type": "Country", name: "India" },
           { "@type": "Country", name: "United States" },
           { "@type": "Country", name: "United Kingdom" },
-          { "@type": "Country", name: "Worldwide" },
+          { "@type": "AdministrativeArea", name: "Worldwide" },
+        ],
+        serviceType: [
+          "Web Development",
+          "SaaS Development",
+          "AI Integration",
+          "Business Automation",
+          "UI/UX Design",
+          "Digital Transformation",
         ],
         founder: [
           {
@@ -271,8 +281,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${manrope.variable} ${dmMono.variable}`}
+      className={`${inter.variable} ${fraunces.variable}`}
     >
+      <head>
+        {/* Preload first carousel image (LCP candidate) */}
+        <link
+          rel="preload"
+          as="image"
+          href="/work/resin-art-441w.webp"
+          type="image/webp"
+          // @ts-expect-error – imagesrcset is a valid preload hint attribute
+          imagesrcset="/work/resin-art-441w.webp 441w, /work/resin-art-882w.webp 882w"
+          imagesizes="441px"
+        />
+        {/* Preconnect for Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="antialiased selection:bg-amber-500/20 selection:text-white">
         <ThemeProvider>
           <CustomCursor />

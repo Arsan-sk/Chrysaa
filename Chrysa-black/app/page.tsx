@@ -1,38 +1,5 @@
-"use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "@/context/ThemeContext";
 import BlackApp from "@/components/BlackApp";
-import WhiteApp from "@/components/white/WhiteApp";
 
 export default function Home() {
-  const { theme } = useTheme();
-
-  return (
-    <AnimatePresence mode="wait">
-      {theme === "black" ? (
-        <motion.div
-          key="black-theme-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="w-full min-h-screen bg-[#0B0A08]"
-        >
-          <BlackApp />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="white-theme-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="w-full min-h-screen bg-[#f2f0eb]"
-        >
-          <WhiteApp />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return <BlackApp />;
 }
-

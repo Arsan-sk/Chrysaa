@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
 import { sampleWorks } from "@shared/content/sampleWorks";
 
 export function SampleWorksCarousel() {
+  const [mounted, setMounted] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [imageLoadedMap, setImageLoadedMap] = useState<Record<string, boolean>>({});
   const [imageErrorMap, setImageErrorMap] = useState<Record<string, boolean>>({});
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -17,12 +18,14 @@ export function SampleWorksCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const total = sampleWorks.length;
 
-  // Track viewport width for responsive 3D coverflow geometry
   useEffect(() => {
+    queueMicrotask(() => {
+      setMounted(true);
+      setIsMobile(window.innerWidth < 768);
+    });
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
@@ -136,10 +139,6 @@ export function SampleWorksCarousel() {
     setDragOffset(0);
   };
 
-  const handleImageLoad = (id: string) => {
-    setImageLoadedMap((prev) => ({ ...prev, [id]: true }));
-  };
-
   const handleImageError = (id: string) => {
     setImageErrorMap((prev) => ({ ...prev, [id]: true }));
   };
@@ -211,7 +210,7 @@ export function SampleWorksCarousel() {
 
       {/* 3D Coverflow Stage */}
       <div className="sample-stage-3d">
-        {sampleWorks.map((work, index) => {
+        {mounted && sampleWorks.map((work, index) => {
           const isCenter = index === activeIndex;
           const style = getCardStyle(index);
           const imageSrc = work.image ? work.image.replace(/^\/public/, "") : "";
@@ -248,10 +247,13 @@ export function SampleWorksCarousel() {
                 <div className="sample-card-media">
                   {/* Real Image Preview when available and not errored */}
                   {imageSrc && !hasImageError ? (
-                    <img
-                      src={imageSrc}
-                      alt={`${work.title} UI preview`}
-                      loading="eager"
+                    <Image
+                      src={imageSrc.replace(/\.png$/, '.webp')}
+                      sizes="(max-width: 768px) 441px, 441px"
+                      alt={`${work.title} website screenshot preview`}
+                      priority={index === 0}
+                      width={441}
+                      height={198}
                       onError={() => handleImageError(work.id)}
                       className="sample-card-img"
                     />
@@ -317,6 +319,7 @@ export function SampleWorksCarousel() {
                         className="sample-live-link"
                         onClick={(e) => e.stopPropagation()}
                         data-cursor="Launch"
+                        aria-label={`Launch ${work.title} interface (opens in new tab)`}
                       >
                         <span>Launch Interface</span>
                         <ExternalLink size={13} />
