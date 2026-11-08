@@ -419,6 +419,22 @@ body.theme-white ::selection {
   transition: all 0.4s ease;
 }
 
+@media (max-width: 839px) {
+  .nav-container {
+    background: rgba(11, 10, 8, 0.72);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-container.nav-scrolled {
+    background: rgba(11, 10, 8, 0.88);
+    border-color: rgba(232, 163, 61, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  }
+}
+
 @media (min-width: 768px) {
   .nav-container {
     padding: 0.75rem 1.5rem;
@@ -2815,11 +2831,7 @@ body.theme-white ::selection {
   border: none;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  /* Touch-target: use padding to meet 44×44px minimum without changing visual size */
-  padding: 18.5px;
-  margin: -18.5px;
-  /* Re-center the visual dot within the padded target */
-  box-sizing: content-box;
+  padding: 0;
 }
 
 .sample-dot.is-active {
@@ -2864,6 +2876,18 @@ body.theme-white ::selection {
 ───────────────────────────────────────────────────────────── */
 
 /* Navigation */
+@media (max-width: 839px) {
+  html.theme-white .nav-container {
+    background: rgba(250, 247, 242, 0.78);
+    border-color: rgba(20, 19, 17, 0.08);
+    box-shadow: 0 4px 20px rgba(20, 19, 17, 0.04);
+  }
+  html.theme-white .nav-container.nav-scrolled {
+    background: rgba(250, 247, 242, 0.92);
+    border-color: rgba(199, 123, 61, 0.25);
+    box-shadow: 0 8px 30px rgba(20, 19, 17, 0.08);
+  }
+}
 html.theme-white .nav-scrolled {
   background: rgba(250, 247, 242, 0.85);
   border-color: rgba(20, 19, 17, 0.08);

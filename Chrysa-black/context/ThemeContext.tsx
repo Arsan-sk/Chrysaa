@@ -12,15 +12,20 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
+  const [theme, setTheme] = useState<Theme>("black");
+
+  useEffect(() => {
+    try {
       const saved = localStorage.getItem("chrysa-theme") as Theme | null;
       if (saved === "black" || saved === "white") {
-        return saved;
+        queueMicrotask(() => {
+          setTheme(saved);
+        });
       }
+    } catch {
+      // ignore
     }
-    return "black";
-  });
+  }, []);
 
   useEffect(() => {
     // Sync class on root and body to allow exact theme styles

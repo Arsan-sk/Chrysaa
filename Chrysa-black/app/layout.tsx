@@ -290,15 +290,20 @@ export default function RootLayout({
           as="image"
           href="/work/resin-art-441w.webp"
           type="image/webp"
-          // @ts-expect-error – imagesrcset is a valid preload hint attribute
-          imagesrcset="/work/resin-art-441w.webp 441w, /work/resin-art-882w.webp 882w"
-          imagesizes="441px"
+          imageSrcSet="/work/resin-art-441w.webp 441w, /work/resin-art-882w.webp 882w"
+          imageSizes="441px"
         />
         {/* Preconnect for Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased selection:bg-amber-500/20 selection:text-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#E8A33D] focus:text-black focus:rounded focus:font-medium focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <CustomCursor />
           <script
