@@ -268,7 +268,7 @@ export const founders: Founder[] = [
       github: "https://github.com/Arsan-sk",
       portfolio: "https://arsansk.vercel.app",
       instagram: "https://www.instagram.com/its.chrysa.dev/",
-      whatsapp: "https://wa.me/arsan.sk",
+      whatsapp: "https://wa.me/919284086903",
     },
   },
   {

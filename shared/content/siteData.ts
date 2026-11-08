@@ -28,8 +28,8 @@ export const connectionDetails = {
     tag: 'Email Response < 4h',
   },
   whatsapp: {
-    handle: '@arsan.sk',
-    href: 'https://wa.me/arsan.sk',
+    handle: 'Shaikh Mohd Arsan',
+    href: 'https://wa.me/919284086903',
     label: 'WhatsApp Direct',
     tag: 'Instant Chat & Audio',
   },

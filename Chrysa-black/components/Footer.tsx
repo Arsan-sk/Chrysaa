@@ -114,7 +114,7 @@ export default function Footer() {
                 <InstagramIcon />
               </a>
               <a
-                href="https://wa.me/arsan.sk"
+                href="https://wa.me/919284086903"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link"
@@ -174,14 +174,14 @@ export default function Footer() {
               <ArrowUpRight size={16} />
             </a>
             <a
-              href="https://wa.me/arsan.sk"
+              href="https://wa.me/919284086903"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-email-link"
               style={{ marginTop: "0.5rem" }}
               data-cursor="WhatsApp"
             >
-              <span>WhatsApp: @arsan.sk</span>
+              <span>WhatsApp: Shaikh Mohd Arsan</span>
               <ArrowUpRight size={16} />
             </a>
             <div className="footer-badge">

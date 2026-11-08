@@ -75,7 +75,7 @@ export default function CTA() {
               </a>
 
               <a
-                href="https://wa.me/arsan.sk"
+                href="https://wa.me/919284086903"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-card"
@@ -86,7 +86,7 @@ export default function CTA() {
                 </div>
                 <div>
                   <div className="contact-card-label">Instant WhatsApp</div>
-                  <div className="contact-card-value">@arsan.sk</div>
+                  <div className="contact-card-value">Shaikh Mohd Arsan</div>
                 </div>
               </a>
 
